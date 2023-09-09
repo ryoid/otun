@@ -1,8 +1,12 @@
 {
   "name": "otun",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "CLI to expose your local HTTP(s) server to the internet. Powered by Cloudflare Quick Tunnels.",
   "repository": "ryoid/otun",
+  "homepage": "https://github.com/ryoid/otun",
+  "bugs": {
+    "url": "https://github.com/ryoid/otun/issues"
+  },
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
@@ -17,7 +21,8 @@
     "otun": "./bin/otun.mjs"
   },
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "scripts": {
     "build": "unbuild",
