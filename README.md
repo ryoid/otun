@@ -1,11 +1,11 @@
-# otun [![npm version][npm-version-src]][npm-version-href] [![bundle][bundle-src]][bundle-href]
+# otun [![npm version][npm-version-src]][npm-version-href]
 
 CLI to expose your local HTTP(s) server to the internet for free. Powered by [Cloudflare Quick Tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/).
 
 Inspired by [unjs/untun](https://github.com/unjs/listhen), and based on efforts from [node-cloudflared](https://github.com/JacobLinCool/node-cloudflared)
 
 <div align="center">
-<img width="100%" src="./.assets/screenshot.jpg">
+<img width="100%" src="./.assets/screenshot.png">
 </div>
 
 ## Usage
@@ -42,5 +42,3 @@ Published under [MIT License](./LICENSE).
 
 [npm-version-src]: https://img.shields.io/npm/v/otun?style=flat&colorA=18181B&colorB=F0DB4F
 [npm-version-href]: https://npmjs.com/package/otun
-[bundle-src]: https://img.shields.io/bundlephobia/minzip/otun?style=flat&colorA=18181B&colorB=F0DB4F
-[bundle-href]: https://bundlephobia.com/result?p=otun
