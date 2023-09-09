@@ -28,7 +28,10 @@ const createPromise = () => {
  * @returns
  */
 export function startCloudflaredTunnel(
-  options: Record<string, string | number | null> = {},
+  _args: Record<string, string | number | null> = {},
+  options: {
+    printLogs?: boolean;
+  } = {},
 ): {
   /** The URL of the tunnel */
   url: Promise<string>;
@@ -50,7 +53,7 @@ export function startCloudflaredTunnel(
   stop: ChildProcess["kill"];
 } {
   const args: string[] = ["tunnel"];
-  for (const [key, value] of Object.entries(options)) {
+  for (const [key, value] of Object.entries(_args)) {
     if (typeof value === "string") {
       args.push(`${key}`, value);
     } else if (typeof value === "number") {
@@ -67,7 +70,7 @@ export function startCloudflaredTunnel(
     stdio: ["ignore", "pipe", "pipe"],
   });
 
-  if (process.env.DEBUG) {
+  if (options.printLogs) {
     child.stdout.pipe(process.stdout);
     child.stderr.pipe(process.stderr);
   }

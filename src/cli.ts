@@ -1,19 +1,19 @@
 import { existsSync } from "node:fs";
-import { defineCommand, runMain as _runMain } from "citty";
+import { runMain as _runMain, defineCommand } from "citty";
 import { consola } from "consola";
 import { colors } from "consola/utils";
 import { renderUnicodeCompact as renderQRCode } from "uqr";
 import {
-  installCloudflared,
-  startCloudflaredTunnel,
   cloudflaredBinPath,
   cloudflaredNotice,
+  installCloudflared,
+  startCloudflaredTunnel,
 } from "./cloudflared";
 
 const main = defineCommand({
   meta: {
     name: "otun",
-    version: "0.0.1",
+    version: "0.0.3",
     description:
       "CLI to expose your local HTTP(s) server to the internet. Powered by Cloudflare Quick Tunnels.",
   },
@@ -39,17 +39,15 @@ const main = defineCommand({
       required: true,
       shortcut: "host",
     },
-    verifyTLS: {
-      description: "Verify TLS (default: false)",
-      valueHint: "true|false",
-      default: "false",
+    "verify-tls": {
+      description: "Verify TLS (default: true)",
+      default: true,
       required: false,
-      shortcut: "verify-tls",
     },
-    logs: {
-      description: "Logs (default: false)",
+    log: {
+      description: "Print Cloudflared Logs (default: false)",
       valueHint: "true|false",
-      default: "false",
+      default: false,
       required: false,
     },
   },
@@ -73,14 +71,16 @@ const main = defineCommand({
       await installCloudflared();
     }
 
-    const options = Object.fromEntries(
-      [
-        ["--url", localUrl],
-        args.verifyTLS ? undefined : ["--no-tls-verify", ""],
-      ].filter(Boolean) as [string, string][],
-    );
+    const cfArgs: Record<string, string | number | null> = {
+      "--url": localUrl,
+    };
+    if (args["verify-tls"] === "false") {
+      cfArgs["--no-tls-verify"] = null;
+    }
 
-    const tunnel = startCloudflaredTunnel(options);
+    const tunnel = startCloudflaredTunnel(cfArgs, {
+      printLogs: args.log === true,
+    });
 
     if (!tunnel) {
       consola.error("Failed to start cloudflare tunnel.");

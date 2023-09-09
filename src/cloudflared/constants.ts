@@ -17,7 +17,7 @@ export const RELEASE_BASE =
  */
 export const cloudflaredBinPath = path.join(
   tmpdir(),
-  "node-untun",
+  "node-otun",
   process.platform === "win32"
     ? `cloudflared.${CLOUDFLARED_VERSION}.exe`
     : `cloudflared.${CLOUDFLARED_VERSION}`,
