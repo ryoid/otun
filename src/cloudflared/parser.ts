@@ -26,7 +26,6 @@ export function parseInfo(
 ) {
   const str = data.toString();
   const log = isInfoLog(str);
-  console.log("log", log);
   if (!log) {
     return;
   }
