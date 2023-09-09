@@ -1,10 +1,16 @@
 # otun [![npm version][npm-version-src]][npm-version-href] [![bundle][bundle-src]][bundle-href]
 
-CLI to expose your local HTTP(s) server to the internet for free. Powered by Cloudflare Quick Tunnels.
+CLI to expose your local HTTP(s) server to the internet for free. Powered by [Cloudflare Quick Tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/).
 
 Inspired by [unjs/untun](https://github.com/unjs/listhen), and based on efforts from [node-cloudflared](https://github.com/JacobLinCool/node-cloudflared)
 
+<div align="center">
+<img width="100%" src="./.assets/screenshot.jpg">
+</div>
+
 ## Usage
+
+View usage info `npx otun --help`.
 
 ```sh
 # npx
