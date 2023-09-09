@@ -1,6 +1,6 @@
 {
   "name": "otun",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "CLI to expose your local HTTP(s) server to the internet. Powered by Cloudflare Quick Tunnels.",
   "repository": "ryoid/otun",
   "homepage": "https://github.com/ryoid/otun",
